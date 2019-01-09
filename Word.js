@@ -16,12 +16,9 @@ Word.prototype.getWord=function(){
     var guessStatus='';
     for(var i=0;i<this.letters.length;i++){
         concatenatedLetters+=this.letters[i].letter;
-        console.log('letter of '+i+'status is: '+this.letters[i].guessedYet);
-        console.log('the display for this character is: '+this.letters[i].getCharacter());
         guessStatus+=this.letters[i].getCharacter()+' ';
     }
-    console.log("the word is: "+concatenatedLetters);
-    console.log("the guess status is: "+ guessStatus);
+    console.log(guessStatus);
 }
 
 Word.prototype.guess=function(letter){
