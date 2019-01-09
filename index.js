@@ -1,5 +1,5 @@
 var Word = require("./Word.js");
-var Inquirer = require('Inquirer');
+var Inquirer = require('inquirer');
 
 //var wordOne=new Word(['h','e','l','l','o']);
 var wordBank=['hello','world','yipee'];
