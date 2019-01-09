@@ -1,9 +1,9 @@
 var Word = require("./Word.js");
 var inquirer = require("inquirer");
 
-var wordBank = ["hello", "world", "yipee"];
+var wordBank = ["javascript", "bootstrap", "css grid", "hypertext"];
 
-var wordOne;
+var word;
 var guessesLeft;
 
 getNewWord();
@@ -18,14 +18,15 @@ function guessALetter() {
       }
     ])
     .then(function(response) {
-      wordOne.guess(response.enteredLetter);
-      guessesLeft--;
-      if (guessesLeft > 0 && !(wordOne.checkSolved())) {
-        console.log("You have " + guessesLeft + " left!");
-        wordOne.getWord();
+      if(!word.guess(response.enteredLetter)){
+        guessesLeft--;
+      };
+      if (guessesLeft > 0 && !word.checkSolved()) {
+        console.log("\nYou have " + guessesLeft + " guesses left!");
+        word.getWord();
         guessALetter();
-      } else if (wordOne.checkSolved()){
-        console.log("Solved! Here's a new word!");
+      } else if (word.checkSolved()) {
+        console.log("\n\nSolved! Here's a new word!");
         getNewWord();
       } else {
         console.log("Sorry! You ran out of guesses!");
@@ -33,9 +34,9 @@ function guessALetter() {
     });
 }
 
-function getNewWord(){
-  wordOne = new Word(wordBank[Math.floor(Math.random() * wordBank.length)]);
-  wordOne.getWord();
+function getNewWord() {
+  word = new Word(wordBank[Math.floor(Math.random() * wordBank.length)]);
+  word.getWord();
   guessesLeft = 10;
   guessALetter();
 }

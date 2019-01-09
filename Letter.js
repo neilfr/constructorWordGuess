@@ -14,6 +14,7 @@ Letter.prototype.getCharacter = function() {
 Letter.prototype.guess = function(guessedLetter) {
   if (guessedLetter === this.letter) {
     this.guessed = true;
+    return true;
   }
 };
 

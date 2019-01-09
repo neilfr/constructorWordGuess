@@ -17,24 +17,34 @@ Word.prototype.getWord = function() {
   for (var i = 0; i < this.letters.length; i++) {
     shadowWord += this.letters[i].getCharacter() + " ";
   }
-  console.log(shadowWord);
+  console.log("\n" + shadowWord);
 };
 
 Word.prototype.checkSolved = function() {
-    var solved = true;
-    for (var i=0;i<this.letters.length; i++){
-        if (this.letters[i].getCharacter()==='_'){
-            solved = false;
-        }
+  var solved = true;
+  for (var i = 0; i < this.letters.length; i++) {
+    if (this.letters[i].getCharacter() === "_") {
+      solved = false;
     }
-    if (solved){
-        return 'solved';
-    }
-}
+  }
+  if (solved) {
+    return "solved";
+  }
+};
 
 Word.prototype.guess = function(letter) {
+  var goodGuess = false;
   for (var i = 0; i < this.letters.length; i++) {
-    this.letters[i].guess(letter);
+    if (this.letters[i].guess(letter)) {
+      goodGuess = true;
+    }
+  }
+  if (goodGuess) {
+    console.log("\nCORRECT!");
+    return true;
+  } else {
+    console.log("\nINCORRECT!");
+    return false;
   }
 };
 
