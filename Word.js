@@ -13,20 +13,24 @@ Word.prototype.addLetter = function(letter) {
 
 Word.prototype.getWord = function() {
   var shadowWord = "";
-  var solved = true;
+
   for (var i = 0; i < this.letters.length; i++) {
-    if (this.letters[i].getCharacter()==='_'){
-        solved = false;
-    }
     shadowWord += this.letters[i].getCharacter() + " ";
   }
   console.log(shadowWord);
-  if (solved){
-      console.log("solved!");
-  } else {
-      console.log("keep going!");
-  }
 };
+
+Word.prototype.checkSolved = function() {
+    var solved = true;
+    for (var i=0;i<this.letters.length; i++){
+        if (this.letters[i].getCharacter()==='_'){
+            solved = false;
+        }
+    }
+    if (solved){
+        return 'solved';
+    }
+}
 
 Word.prototype.guess = function(letter) {
   for (var i = 0; i < this.letters.length; i++) {
